@@ -9,6 +9,10 @@
 </h1>
 <br/>
 <a href="hello-servlet">Hello Servlet</a>
+<br/>
 <a href="try">Try Servlet</a>
+<br/>
+<a href="forms/myForm.jsp">myFrom</a>
+
 </body>
 </html>
