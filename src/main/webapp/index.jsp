@@ -12,7 +12,12 @@
 <br/>
 <a href="try">Try Servlet</a>
 <br/>
-<a href="forms/myForm.jsp">myFrom</a>
+<a href="forms/getMethodForm.jsp">getMethodForm</a>
+<br/>
+<a href="forms/postMethodForm.jsp">postMethodForm</a>
+
+
+
 
 </body>
 </html>
