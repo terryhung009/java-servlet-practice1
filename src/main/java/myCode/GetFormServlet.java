@@ -12,12 +12,16 @@ public class GetFormServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
-        PrintWriter out = response.getWriter();
-        out.println("This paragraph is handling a form.");
+
 
         String bookName = request.getParameter("name");
         String bookPrice = request.getParameter("price");
         String bookAuthor = request.getParameter("author");
+
+        PrintWriter out = response.getWriter();
+        out.println("<h3> Name: "+ bookName + "</h3>");
+        out.println("<h3> Price: "+ bookPrice + "</h3>");
+        out.println("<h3> Author: "+ bookAuthor + "</h3>");
 
 
 
