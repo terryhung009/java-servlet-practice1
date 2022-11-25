@@ -21,6 +21,8 @@
 <a href="forms/sessionRegisterForm.jsp">sessionRegisterForm</a>
 <br/>
 <a href="example.jsp">JSP example</a>
+<br/>
+<a href="findbook.html">findbook</a>
 
 
 
