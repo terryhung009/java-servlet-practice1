@@ -25,6 +25,8 @@
 <a href="findbook.html">findbook</a>
 <br/>
 <a href="currency.html">currency台幣轉換</a>
+<br/>
+<a href="count.jsp">網站人數計數器</a>
 
 
 
