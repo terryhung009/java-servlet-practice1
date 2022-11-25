@@ -23,6 +23,8 @@
 <a href="example.jsp">JSP example</a>
 <br/>
 <a href="findbook.html">findbook</a>
+<br/>
+<a href="currency.html">currency台幣轉換</a>
 
 
 
