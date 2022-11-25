@@ -1,8 +1,9 @@
 package myCode;
 
-import jakarta.servlet.*;
+import Obj.Book;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -11,8 +12,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-@WebServlet(name = "CookieServlet", value = "/CookieServlet")
-public class CookieServlet extends HttpServlet {
+@WebServlet(name = "SessionServlet", value = "/SessionServlet")
+public class SessionServlet extends HttpServlet {
 
     private PreparedStatement preparedStatement;
 
@@ -30,12 +31,17 @@ public class CookieServlet extends HttpServlet {
         String price = request.getParameter("price");
         String author = request.getParameter("author");
 
-        Cookie cookieName = new Cookie("name",name);
-        Cookie cookiePrice = new Cookie("price",price);
-        Cookie cookieAuthor = new Cookie("author",author);
-        response.addCookie(cookieName);
-        response.addCookie(cookiePrice);
-        response.addCookie(cookieAuthor);
+        Book book = new Book();
+        book.setName(name);
+        book.setPrice(Integer.parseInt(price));
+        book.setAuthor(author);
+
+        HttpSession httpSession = request.getSession();
+        httpSession.setAttribute("book",book);
+
+
+
+
 
         PrintWriter out = response.getWriter();
         out.println("You entered the following data:");
@@ -45,7 +51,7 @@ public class CookieServlet extends HttpServlet {
         out.println("<br />");
         out.println("<p>Book author: "+ author + " </p> ");
         out.println("<br />");
-        out.println("<form method=\"post\" action=\"/cookieRegis\">");
+        out.println("<form method=\"post\" action=\"/sessionRegis\">");
         out.println("<input type =\"submit\" value=\"submit\" >");
         out.println("</form>");
         out.close();
@@ -58,29 +64,16 @@ public class CookieServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String name="";
-        int price=0;
-        String author="";
+        HttpSession httpSession = request.getSession();
+        Book book = (Book) httpSession.getAttribute("book");
 
-        Cookie[] cookies = request.getCookies();
-        for(Cookie cookie: cookies){
-            if(cookie.getName().equals("name")){
-                name = cookie.getValue();
-            }
-            if(cookie.getName().equals("price")){
-                price = Integer.parseInt(cookie.getValue());
-            }
-            if(cookie.getName().equals("author")){
-                author = cookie.getValue();
-            }
-        }
 
         try{
-            storeBook( name , price  , author);
+            storeBook( book.getName() ,book.getPrice()  , book.getAuthor());
 
             PrintWriter out = response.getWriter();
 
-            out.println("Book " + name + " has been stored in the database.");
+            out.println("Book " + book.getName() + " has been stored in the database.");
 
             out.close();
         }catch (Exception e){

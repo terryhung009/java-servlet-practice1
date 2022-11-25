@@ -15,6 +15,12 @@
 <a href="forms/getMethodForm.jsp">getMethodForm</a>
 <br/>
 <a href="forms/postMethodForm.jsp">postMethodForm</a>
+<br/>
+<a href="forms/cookieRegisterForm.jsp">cookieRegisterForm</a>
+<br/>
+<a href="forms/sessionRegisterForm.jsp">sessionRegisterForm</a>
+<br/>
+<a href="example.jsp">JSP example</a>
 
 
 
